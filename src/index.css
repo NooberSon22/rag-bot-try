@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    [contenteditable="true"]:empty:not(:focus):before {
+        content: attr(data-ph);
+        color: grey;
+        pointer-events: none;
+        display: block; /* For Firefox */
+    }
+      
+}
