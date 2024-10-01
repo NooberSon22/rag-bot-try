@@ -4,6 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import { sendMessage, createConversation } from "../api/cody";
 import chatStore from "../data/botStore";
 import { useQueryClient } from "@tanstack/react-query";
+import RecordBox from "./RecordBox";
 
 const MessageBox = ({
   currentConversation,
@@ -65,7 +66,12 @@ const MessageBox = ({
   }, [message]);
 
   return (
-    <div className="flex px-5 py-3 my-5 border border-gray-300 justify-between items-end w-full">
+    <div className="flex gap-3 px-5 py-3 my-5 border border-gray-300 justify-between items-end w-full">
+      <RecordBox
+        setMessages={setMessages}
+        sendMutateAsync={sendMutateAsync}
+      />
+
       <div
         ref={contentRef} // Attach the ref here
         suppressContentEditableWarning={true}

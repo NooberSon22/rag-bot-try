@@ -51,7 +51,7 @@ const SideBar = ({ showSideBar, toggleSideBar }) => {
                   className="text-white bg-black/25 py-3 px-3 rounded-md"
                   onClick={() => handleConversationClick(conversation)}
                 >
-                  {conversation.name}
+                  <p className="pointer-events-none truncate">{conversation.name}</p>
                 </div>
               );
             })}

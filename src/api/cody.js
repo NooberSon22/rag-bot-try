@@ -95,6 +95,7 @@ const sendMessage = async (id, content, stream = false) => {
   }
 
   const { data } = await response.json();
+  console.log(data);
   return data;
 };
 

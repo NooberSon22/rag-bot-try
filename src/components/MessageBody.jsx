@@ -6,6 +6,7 @@ import MessageBox from "./MessageBox";
 import MessageContainer from "./MessageContainer";
 import chatStore from "../data/botStore";
 import { deleteConversation, getMessages } from "../api/cody";
+import responseLoaderStore from "../data/responseLoaderStore";
 
 const MessageBody = ({ toggleSideBar }) => {
   const [messages, setMessages] = useState([]);
@@ -31,6 +32,8 @@ const MessageBody = ({ toggleSideBar }) => {
     enabled: Boolean(currentConversation?.id),
   });
   const messageEndRef = useRef(null);
+  const { recordingUserResponse } = responseLoaderStore((state) => state);
+
   const scrollToBottom = () => {
     messageEndRef.current?.scrollIntoView({
       behavior: "smooth",
@@ -54,7 +57,7 @@ const MessageBody = ({ toggleSideBar }) => {
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages, responding]);
+  }, [messages, responding, recordingUserResponse]);
 
   // useEffect(() => {
   //   if (!responseURL) return;
@@ -154,6 +157,15 @@ const MessageBody = ({ toggleSideBar }) => {
                 key={responseURL}
               />
             )}
+
+            {recordingUserResponse && (
+              <MessageContainer
+                isMachine={false}
+                content={"Recording..."}
+                userResponding={true}
+              />
+            )}
+
             <div ref={messageEndRef}></div>
           </ul>
         )}
