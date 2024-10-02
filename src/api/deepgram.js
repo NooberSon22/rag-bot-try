@@ -1,5 +1,5 @@
 //const DEEP_GRAM_URL = "https://api.deepgram.com/v1/listen";
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "https://bot-backend-1-k7la.onrender.com";
 
 const speechToText = async (file) => {
   console.log(file);
